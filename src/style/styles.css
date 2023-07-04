@@ -50,3 +50,71 @@ span {
   color: rgb(146, 76, 76);
   cursor: pointer;
 }
+
+section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 100px 10%;
+}
+
+.pageDesign {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 67%;
+  border: 2px solid black;
+}
+
+.pageDesign h2 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #cfc5c5;
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  border-radius: 0 20px 10px 20px;
+  margin: 10px 10px;
+}
+
+.card img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+/* Responsive styles for screen width <= 480px */
+
+@media only screen and (width <= 480px) {
+  header {
+    padding: 0 5% 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0;
+  }
+
+  .pageDesign {
+    width: 100%;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 100px 0%;
+  }
+}
