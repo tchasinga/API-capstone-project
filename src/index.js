@@ -18,7 +18,6 @@ const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     const result = await response.json();
-    console.log(result);
 
     displayResult.innerHTML = result.data
       .map((getData) => {
@@ -38,7 +37,6 @@ const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
       })
       .join('');
   } catch (error) {
-    console.log(error);
     displayResult.innerHTML = 'An error occurred while fetching data.';
   }
 })();
