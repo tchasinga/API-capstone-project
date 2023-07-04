@@ -92,7 +92,7 @@ button {
 
 /* Responsive styles for screen width <= 480px */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (width <= 480px) {
   header {
     padding: 0 5% 10px;
   }
