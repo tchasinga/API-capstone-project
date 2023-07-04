@@ -37,7 +37,7 @@ nav ul {
   margin-top: 10px;
 }
 
-nav ul li a {
+.navLinks {
   color: rgb(12, 11, 11);
   transition: all 0.3s ease-in;
 }
@@ -46,7 +46,7 @@ span {
   color: rgb(146, 76, 76);
 }
 
-nav ul li a:hover {
+.navLinks:hover {
   color: rgb(146, 76, 76);
   cursor: pointer;
 }
