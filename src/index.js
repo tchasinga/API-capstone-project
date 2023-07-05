@@ -1,5 +1,6 @@
 import './style/styles.css';
-import './modules/details-modal.js';
+import './style/modal.css';
+import initializeModal from './modules/details-modal.js';
 import url from './modules/ApiLink.js';
 
 const displayResult = document.querySelector('.getArtWork');
@@ -41,3 +42,5 @@ await (async () => {
     displayResult.innerHTML = 'An error occurred while fetching data.';
   }
 })();
+
+initializeModal();
