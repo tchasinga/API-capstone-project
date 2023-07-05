@@ -1,4 +1,5 @@
 import './style/styles.css';
+import './modules/details-modal.js';
 import url from './modules/ApiLink.js';
 
 const displayResult = document.querySelector('.getArtWork');
@@ -25,7 +26,7 @@ const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
           return null;
         }
         return `
-                <div class="card">
+                <div class="card" data-artwork-id="${getData.id}">
                     <img src="https://www.artic.edu/iiif/2/${getData.image_id}/full/843,/0/default.jpg" alt="IdImage">
                     <div class="pageDesign">
                     <h2>${getData.title}</h2>
