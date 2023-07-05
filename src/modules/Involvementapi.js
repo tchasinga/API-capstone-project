@@ -13,7 +13,7 @@ const getArtworkComments = async (imageId) => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      if (response.status === 404) {
+      if (response.status === 404 || response.status === 400) {
         return [];
       }
       throw new Error('An error occurred');
