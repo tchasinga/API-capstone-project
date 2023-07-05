@@ -2,11 +2,8 @@ import './style/styles.css';
 import url from './modules/ApiLink.js';
 import { getAllLikes } from './modules/Involvementapi.js';
 
-
 const displayResult = document.querySelector('.getArtWork');
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-
 
 (async () => {
   try {
@@ -22,15 +19,14 @@ const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     const result = await response.json();
-       
+
     const data = result.data.map((artwork) => {
-      const likesForThisArtwork = LikesData.find(like => like.item_id === artwork.image_id)
-      if(!likesForThisArtwork){
-          return {...artwork, numberOfLikes: 0}
+      const likesForThisArtwork = LikesData.find((like) => like.item_id === artwork.image_id);
+      if (!likesForThisArtwork) {
+        return { ...artwork, numberOfLikes: 0 };
       }
-      return {...artwork, numberOfLikes: likesForThisArtwork.likes}
-  })
-    console.log(data)
+      return { ...artwork, numberOfLikes: likesForThisArtwork.likes };
+    });
     const resultHTML = data
       .map((getData) => {
         if (getData.image_id === null) {
@@ -49,10 +45,8 @@ const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         `;
       })
       .join('');
-      console.log(result);
     displayResult.innerHTML = resultHTML;
-
   } catch (error) {
-   console.log(error)
+    displayResult.innerHTML = 'Something went wrong';
   }
 })();
