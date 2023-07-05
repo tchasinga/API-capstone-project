@@ -7,7 +7,7 @@ displayResult.innerHTML = 'Page is loading...';
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-(async () => {
+await (async () => {
   try {
     const response = await Promise.race([fetch(url), timeout(50000)]);
     if (!response) {
