@@ -7,6 +7,25 @@ function getAllLikes() {
     .then((data) => data);
 }
 
+const getArtworkComments = async (imageId) => {
+  const url = `${involvementAPI}apps/${involvementAPIid}/comments?item_id=${imageId}`;
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return [];
+      }
+      throw new Error('An error occurred');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Unknown Error fetching data');
+  }
+};
+
 function postLikesImg(imageId) {
   return fetch(`${involvementAPI}apps/${involvementAPIid}/likes/`, {
     method: 'POST',
@@ -21,4 +40,4 @@ function postLikesImg(imageId) {
     .then((data) => data);
 }
 
-export { getAllLikes, postLikesImg };
+export { getAllLikes, getArtworkComments, postLikesImg };
