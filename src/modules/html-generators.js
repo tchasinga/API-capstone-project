@@ -8,7 +8,7 @@ const generateArtWorkDetailsHTML = (artworkData) => {
   }
 
   let exhibitionHistory = 'N/A';
-  if (artworkData.exhibition_history.length) {
+  if (artworkData.exhibition_history?.length) {
     exhibitionHistory = artworkData.exhibition_history
       .split('\n')
       .slice(0, 4)
