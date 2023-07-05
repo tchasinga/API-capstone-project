@@ -27,7 +27,7 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
           <div class="modal__artwork__comment__header">
             <div class="modal__artwork__comment__avatar"><span>${username[0]}</span></div>
             <span class="modal__artwork__comment__username">${username}</span>
-            <span class="modal__artwork__comment__date">on ${creationDate}</span>
+            <div class="modal__artwork__comment__date">on <span>${creationDate}</span></div>
           </div>
           <p class="modal__artwork__comment__body">${comment}</p>
         </div>
@@ -63,7 +63,7 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
     <div class="modal__exhibition-history__item">${exhibitionHistory}</div>
   </div>
   <div class="modal__artwork__comments">
-    <h3>Comments (${comments.length})</h3>
+    <h3 class="modal__artwork__comments__header">Comments (${comments.length})</h3>
     ${commentsHTML}
   </div>
 `;
