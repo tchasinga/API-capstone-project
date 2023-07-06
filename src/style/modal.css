@@ -93,12 +93,6 @@
   color: rgb(83, 82, 81);
 }
 
-.modal__artwork__stat > div > span {
-  background-color: rgb(208, 206, 206);
-  padding: 0.05rem 0.5rem;
-  border-radius: 0.2rem;
-}
-
 .modal__exhibition-history__item {
   display: flex;
   flex-direction: column;
@@ -243,4 +237,10 @@
 
 .add-comment__form__btn:active {
   transform: translateY(3px);
+}
+
+.modal__artwork__stat > div > span {
+  background-color: rgb(208, 206, 206);
+  padding: 0.05rem 0.5rem;
+  border-radius: 0.2rem;
 }
