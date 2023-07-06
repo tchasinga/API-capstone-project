@@ -11,7 +11,7 @@ const fetchSingleArtworkDetails = async (artworkId) => {
     const { data } = await response.json();
     return data;
   } catch (error) {
-    throw new Error('Unknown Error fetching artwork detals');
+    throw new Error(`Error fetching artwork detals ${error}`);
   }
 };
 

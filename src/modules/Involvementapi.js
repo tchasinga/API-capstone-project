@@ -1,5 +1,5 @@
 const involvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-const involvementAPIid = 'Q1L23qalAk2Wt8OSXMKp';
+const involvementAPIid = 'G76rmGDabNdU1RkNCX4H';
 
 function getAllLikes() {
   return fetch(`${involvementAPI}apps/${involvementAPIid}/likes/`)
@@ -14,7 +14,12 @@ const getArtworkComments = async (imageId) => {
 
     if (!response.ok) {
       if (response.status === 404 || response.status === 400) {
-        return [];
+        /*
+         * This happens if there are no comments saved in the InvolvementAPI for the
+         * artwork with the given ID. This is expected, and we should return an empty
+         * array to show that there are no comments.
+         */
+        throw Error('There are no comments');
       }
       throw new Error('An error occurred');
     }
@@ -22,7 +27,10 @@ const getArtworkComments = async (imageId) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    throw new Error('Unknown Error fetching data');
+    if (error.message === 'There are no comments') {
+      return [];
+    }
+    throw new Error(`Error fetching data ${error}`);
   }
 };
 
