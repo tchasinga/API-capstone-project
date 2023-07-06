@@ -51,18 +51,21 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
           <span>Your name</span>
         </label>
         <label class="add-comment__form__label" for="comment">
-          <input
+          <textarea
             class="add-comment__form__input"
-            type="text"
             id="comment"
             name="comment"
+            rows="6"
             required
-          />
+          ></textarea>
           <span>Your insights</span>
         </label>
         <div class="add-comment__form__errors" id="add-comment__form__errors">
             <span>Username is required.</span>
             <span>Please provide a comment.</span>
+        </div>
+        <div class="add-comment__form__success" id="add-comment__form__success">
+          <span>Your comment was added sucessfully.</span>
         </div>
         <button class="add-comment__form__btn" type="submit">Comment</button>
       </form>
