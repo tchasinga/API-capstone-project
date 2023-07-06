@@ -9,29 +9,27 @@ function getAllLikes() {
 
 const getArtworkComments = async (imageId) => {
   const url = `${involvementAPI}apps/${involvementAPIid}/comments?item_id=${imageId}`;
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
+  return fetch(url)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
       if (response.status === 404 || response.status === 400) {
         /*
          * This happens if there are no comments saved in the InvolvementAPI for the
          * artwork with the given ID. This is expected, and we should return an empty
          * array to show that there are no comments.
          */
-        throw Error('There are no comments');
+        return [];
       }
-      throw new Error('An error occurred');
-    }
 
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    if (error.message === 'There are no comments') {
-      return [];
-    }
-    throw new Error(`Error fetching data ${error}`);
-  }
+      throw new Error(
+        `Error getting artwork comments (status code: ${response.status})`,
+      );
+    })
+    .catch((error) => {
+      throw new Error(`Network error fetching comments ${error}`);
+    });
 };
 
 function postLikesImg(imageId) {
