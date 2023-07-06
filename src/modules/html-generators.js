@@ -63,7 +63,7 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
     <div class="modal__exhibition-history__item">${exhibitionHistory}</div>
   </div>
   <div class="modal__artwork__comments">
-    <h3 class="modal__artwork__comments__header">Comments (${comments.length})</h3>
+    <h3 class="modal__artwork__comments__header">Comments (<span id="comment-count"></span>)</h3>
     ${commentsHTML}
   </div>
 `;
