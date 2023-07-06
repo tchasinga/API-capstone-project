@@ -1,4 +1,4 @@
-const generateArtWorkDetailsHTML = (artworkData) => {
+const generateArtWorkDetailsHTML = (artworkData, comments) => {
   const artworkImgUrl = `https://www.artic.edu/iiif/2/${artworkData.image_id}/full/843,/0/default.jpg`;
   let materialsUsed = 'N/A';
   if (artworkData.material_titles.length) {
@@ -8,12 +8,34 @@ const generateArtWorkDetailsHTML = (artworkData) => {
   }
 
   let exhibitionHistory = 'N/A';
-  if (artworkData.exhibition_history.length) {
+  if (artworkData.exhibition_history?.length) {
     exhibitionHistory = artworkData.exhibition_history
       .split('\n')
       .slice(0, 4)
       .map((item) => `<p>${item}</p>`)
       .join('\n');
+  }
+
+  let commentsHTML = '<p>There are no comments for this artwork.</p>';
+
+  if (comments.length) {
+    const commentsArr = [];
+    comments.forEach((commentData) => {
+      const { username, creation_date: creationDate, comment } = commentData;
+      const html = `
+        <div class="modal__artwork__comment"/>
+          <div class="modal__artwork__comment__header">
+            <div class="modal__artwork__comment__avatar"><span>${username[0]}</span></div>
+            <span class="modal__artwork__comment__username">${username}</span>
+            <div class="modal__artwork__comment__date">on <span>${creationDate}</span></div>
+          </div>
+          <p class="modal__artwork__comment__body">${comment}</p>
+        </div>
+      `;
+      commentsArr.push(html);
+    });
+
+    commentsHTML = commentsArr.join('\n');
   }
 
   return `
@@ -40,7 +62,10 @@ const generateArtWorkDetailsHTML = (artworkData) => {
     <span>Exhibition History:</span>
     <div class="modal__exhibition-history__item">${exhibitionHistory}</div>
   </div>
-  
+  <div class="modal__artwork__comments">
+    <h3 class="modal__artwork__comments__header">Comments (${comments.length})</h3>
+    ${commentsHTML}
+  </div>
 `;
 };
 

@@ -1,4 +1,5 @@
 import fetchSingleArtworkDetails from './artworkAPI.js';
+import { getArtworkComments } from './Involvementapi.js';
 import generateArtWorkDetailsHTML from './html-generators.js';
 
 const initializeModal = () => {
@@ -14,7 +15,8 @@ const initializeModal = () => {
     overlay.classList.add('open');
     modal.classList.add('open');
     const artworkData = await fetchSingleArtworkDetails(artworkId);
-    modalBody.innerHTML = generateArtWorkDetailsHTML(artworkData);
+    const comments = await getArtworkComments(artworkData.image_id);
+    modalBody.innerHTML = generateArtWorkDetailsHTML(artworkData, comments);
     document.body.style.overflow = 'hidden';
   }));
 
