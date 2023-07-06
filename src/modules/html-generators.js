@@ -38,6 +38,36 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
     commentsHTML = commentsArr.join('\n');
   }
 
+  const addCommentForm = `
+    <form class="add-comment__form" id="add-comment__form">
+        <label class="add-comment__form__label" for="username">
+          <input
+            class="add-comment__form__input"
+            type="text"
+            id="username"
+            name="username"
+            required
+          />
+          <span>Your name</span>
+        </label>
+        <label class="add-comment__form__label" for="comment">
+          <input
+            class="add-comment__form__input"
+            type="text"
+            id="comment"
+            name="comment"
+            required
+          />
+          <span>Your insights</span>
+        </label>
+        <div class="add-comment__form__errors" id="add-comment__form__errors">
+            <span>Username is required.</span>
+            <span>Please provide a comment.</span>
+        </div>
+        <button class="add-comment__form__btn" type="submit">Comment</button>
+      </form>
+  `;
+
   return `
   <div class="modal__header">
     <h2>${artworkData.title}</h2>
@@ -65,6 +95,10 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
   <div class="modal__artwork__comments">
     <h3 class="modal__artwork__comments__header">Comments (${comments.length})</h3>
     ${commentsHTML}
+    <div class="add-comment-sec">
+      <h3>Add a comment</h3>
+      ${addCommentForm}
+    </div>
   </div>
 `;
 };
