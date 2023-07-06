@@ -3,6 +3,7 @@ import './style/modal.css';
 import initializeModal from './modules/details-modal.js';
 import url from './modules/ApiLink.js';
 import { getAllLikes } from './modules/Involvementapi.js';
+import SetLikes from './modules/LikeEvent.js';
 
 const displayResult = document.querySelector('.getArtWork');
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -35,12 +36,12 @@ await (async () => {
           return null;
         }
         return `
-          <div class="card" data-artwork-id="${getData.id}">
+          <div class="card" data-artwork-id="${getData.image_id}">
             <img src="https://www.artic.edu/iiif/2/${getData.image_id}/full/843,/0/default.jpg" alt="IdImage">
             <div class="pageDesign">
               <h2>${getData.title}</h2>
               <p><span class="likesCount">${getData.numberOfLikes}</span></p>
-              <i class='bx bx-heart' style='color:#d01212'></i>
+              <i class='bx bx-heart' data-artwork-id="${getData.image_id}" style='color:#d01212'></i>
             </div>
             <button>Comment..</button>
           </div>
@@ -54,3 +55,4 @@ await (async () => {
 })();
 
 initializeModal();
+SetLikes();
