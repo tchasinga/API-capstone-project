@@ -1,6 +1,7 @@
 import fetchSingleArtworkDetails from './artworkAPI.js';
 import { getArtworkComments } from './Involvementapi.js';
 import generateArtWorkDetailsHTML from './html-generators.js';
+import addFloatingLabels from './add-comment-form.js';
 
 const initializeModal = () => {
   const artWorkCards = document.querySelectorAll('.card');
@@ -17,6 +18,7 @@ const initializeModal = () => {
     const artworkData = await fetchSingleArtworkDetails(artworkId);
     const comments = await getArtworkComments(artworkData.image_id);
     modalBody.innerHTML = generateArtWorkDetailsHTML(artworkData, comments);
+    addFloatingLabels();
     document.body.style.overflow = 'hidden';
   }));
 
