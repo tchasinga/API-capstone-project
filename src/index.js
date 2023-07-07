@@ -36,7 +36,7 @@ await (async () => {
           return null;
         }
         return `
-          <div class="card" data-artwork-id="${getData.image_id}">
+          <div class="card" data-artwork-id="${getData.id}">
             <img src="https://www.artic.edu/iiif/2/${getData.image_id}/full/843,/0/default.jpg" alt="IdImage">
             <div class="pageDesign">
               <h2>${getData.title}</h2>
