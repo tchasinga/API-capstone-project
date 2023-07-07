@@ -7,6 +7,7 @@
   font-family: 'Poppins', sans-serif;
   list-style: none;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 header {
@@ -100,6 +101,19 @@ button {
   color: #664747;
 }
 
+.FootageSide{
+  padding: 10px 20%;
+  text-align: center;
+  display : flex;
+  background-color: #cfc5c5;
+  width: 100%;
+  
+}
+
+.FootageSide p {
+  width : 200%;
+  text-align: center;
+}
 /* Responsive styles for screen width <= 480px */
 
 @media only screen and (width <= 480px) {
