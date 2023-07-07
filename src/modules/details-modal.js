@@ -5,6 +5,7 @@ import {
   addFloatingLabels,
   initializeFormEventHandlers,
 } from './add-comment-form.js';
+import countComments from './comments-counter.js';
 
 const initializeModal = () => {
   const artWorkCards = document.querySelectorAll('.card');
@@ -23,6 +24,7 @@ const initializeModal = () => {
     modalBody.innerHTML = generateArtWorkDetailsHTML(artworkData, comments);
     addFloatingLabels();
     initializeFormEventHandlers();
+    countComments();
     document.body.style.overflow = 'hidden';
   }));
 
