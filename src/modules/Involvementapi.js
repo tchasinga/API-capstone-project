@@ -46,4 +46,37 @@ function postLikesImg(imageId) {
     .then((data) => data);
 }
 
-export { getAllLikes, getArtworkComments, postLikesImg };
+const postNewComment = async ({ artworkId, username, comment }) => {
+  const url = `${involvementAPI}apps/${involvementAPIid}/comments`;
+  const requestBody = {
+    item_id: artworkId,
+    username,
+    comment,
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    });
+    if (!response.ok) {
+      throw new Error(
+        `Error posting comment: Status code ${response.status} returned`,
+      );
+    }
+    const data = await response.text();
+    return { success: data === 'Created' };
+  } catch (error) {
+    throw new Error(`Unknown Error fetching data ${error}`);
+  }
+};
+
+export {
+  getAllLikes,
+  getArtworkComments,
+  postLikesImg,
+  postNewComment,
+};

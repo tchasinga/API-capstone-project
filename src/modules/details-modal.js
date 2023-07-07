@@ -1,6 +1,10 @@
 import fetchSingleArtworkDetails from './artworkAPI.js';
 import { getArtworkComments } from './Involvementapi.js';
 import generateArtWorkDetailsHTML from './html-generators.js';
+import {
+  addFloatingLabels,
+  initializeFormEventHandlers,
+} from './add-comment-form.js';
 import countComments from './comments-counter.js';
 
 const initializeModal = () => {
@@ -18,6 +22,8 @@ const initializeModal = () => {
     const artworkData = await fetchSingleArtworkDetails(artworkId);
     const comments = await getArtworkComments(artworkData.image_id);
     modalBody.innerHTML = generateArtWorkDetailsHTML(artworkData, comments);
+    addFloatingLabels();
+    initializeFormEventHandlers();
     countComments();
     document.body.style.overflow = 'hidden';
   }));
