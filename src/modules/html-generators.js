@@ -39,7 +39,7 @@ const generateArtWorkDetailsHTML = (artworkData, comments) => {
   }
 
   const addCommentForm = `
-    <form class="add-comment__form" id="add-comment__form">
+    <form class="add-comment__form" id="add-comment__form" data-artwork-id="${artworkData.image_id}">
         <label class="add-comment__form__label" for="username">
           <input
             class="add-comment__form__input"

@@ -1,3 +1,4 @@
+import initializeModal from './details-modal.js';
 import { postNewComment } from './Involvementapi.js';
 
 // Add floating labels
@@ -22,12 +23,26 @@ export const addFloatingLabels = () => {
 export const initializeFormEventHandlers = () => {
   // Add form submition event handler
   const addCommentForm = document.getElementById('add-comment__form');
-  addCommentForm.addEventListener('submit', (e) => {
+  addCommentForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    postNewComment({
-      artworkId: '26588b76-efd3-7c7c-2540-8d17ebb8b5b0',
-      username: 'Bill',
-      comment: 'No, it\'s most likely a cow',
-    });
+    const { artworkId } = addCommentForm.dataset;
+    const data = new FormData(addCommentForm);
+    const username = data.get('username');
+    const comment = data.get('comment');
+
+    try {
+      const { success } = await postNewComment({
+        artworkId,
+        username,
+        comment,
+      });
+      if (success) {
+        // TODO: Tell user that the comment was saved successfully
+        addCommentForm.reset();
+        initializeModal();
+      }
+    } catch (e) {
+      // TODO: Tell user that the comment was NOT saved successfully, try again later
+    }
   });
 };
