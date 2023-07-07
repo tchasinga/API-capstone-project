@@ -4,6 +4,7 @@ import initializeModal from './modules/details-modal.js';
 import url from './modules/ApiLink.js';
 import { getAllLikes } from './modules/Involvementapi.js';
 import SetLikes from './modules/LikeEvent.js';
+import displayNumberOfCard from './modules/CardCart.js';
 
 const displayResult = document.querySelector('.getArtWork');
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -56,3 +57,4 @@ await (async () => {
 
 initializeModal();
 SetLikes();
+displayNumberOfCard();

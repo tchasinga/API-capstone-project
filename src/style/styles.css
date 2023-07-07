@@ -94,6 +94,12 @@ button {
   cursor: pointer;
 }
 
+.CardNumber{
+  margin-left: 5px;
+  font-weight: 600;
+  color: #664747;
+}
+
 /* Responsive styles for screen width <= 480px */
 
 @media only screen and (width <= 480px) {
