@@ -1,4 +1,3 @@
-import initializeModal from './details-modal.js';
 import { postNewComment } from './Involvementapi.js';
 
 // Add floating labels
@@ -39,7 +38,7 @@ export const initializeFormEventHandlers = () => {
       if (success) {
         // TODO: Tell user that the comment was saved successfully
         addCommentForm.reset();
-        initializeModal();
+        window.location.reload();
       }
     } catch (e) {
       // TODO: Tell user that the comment was NOT saved successfully, try again later
