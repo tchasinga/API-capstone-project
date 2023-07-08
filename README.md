@@ -77,7 +77,7 @@ Clone this repository to your desired folder:
 ```sh
   git clone https://github.com/tchasinga/API-capstone-project.git
 
-  cd javascript-capstone
+  cd API-capstone 
 ```
 
 ### Install
