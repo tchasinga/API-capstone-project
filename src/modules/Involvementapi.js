@@ -1,11 +1,9 @@
 const involvementAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const involvementAPIid = 'G76rmGDabNdU1RkNCX4H';
 
-function getAllLikes() {
-  return fetch(`${involvementAPI}apps/${involvementAPIid}/likes/`)
-    .then((response) => response.json())
-    .then((data) => data);
-}
+const getAllLikes = () => fetch(`${involvementAPI}apps/${involvementAPIid}/likes/`)
+  .then((response) => response.json())
+  .then((data) => data);
 
 const getArtworkComments = async (imageId) => {
   const url = `${involvementAPI}apps/${involvementAPIid}/comments?item_id=${imageId}`;
@@ -75,8 +73,5 @@ const postNewComment = async ({ artworkId, username, comment }) => {
 };
 
 export {
-  getAllLikes,
-  getArtworkComments,
-  postLikesImg,
-  postNewComment,
+  getAllLikes, getArtworkComments, postLikesImg, postNewComment,
 };

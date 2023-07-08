@@ -1,6 +1,6 @@
 import { postLikesImg } from './Involvementapi.js';
 
-function SetLikes() {
+const SetLikes = () => {
   const LikeBtn = document.querySelectorAll('.bx-heart');
 
   LikeBtn.forEach((element) => {
@@ -11,6 +11,6 @@ function SetLikes() {
       window.location.reload();
     });
   });
-}
+};
 
 export default SetLikes;
