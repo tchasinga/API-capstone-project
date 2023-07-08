@@ -24,7 +24,7 @@ describe('displayNumberOfCard', () => {
   it('should handle empty card list', () => {
     // Remove all the card elements
     const cards = document.querySelectorAll('.card');
-    cards.forEach(card => card.parentNode.removeChild(card));
+    cards.forEach((card) => card.parentNode.removeChild(card));
 
     // Call the function
     displayNumberOfCard();
@@ -38,7 +38,7 @@ describe('displayNumberOfCard', () => {
 
   it('should handle large number of cards', () => {
     // Add 100 card elements
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i += 1) {
       const newCard = document.createElement('div');
       newCard.classList.add('card');
       document.body.appendChild(newCard);

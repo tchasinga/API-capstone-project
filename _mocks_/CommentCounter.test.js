@@ -1,4 +1,4 @@
-import countComments from "../src/modules/comments-counter.js";
+import countComments from '../src/modules/comments-counter.js';
 
 // Mock implementations
 document.querySelectorAll = jest.fn();
@@ -10,7 +10,7 @@ document.getElementById = jest.fn(() => {
 
 // Tests for countComments function
 describe('countComments', () => {
-    it('test_no_comments', () => {
+  it('test_no_comments', () => {
     document.body.innerHTML = '<div></div>';
     countComments();
     const commentCountSpan = document.getElementById('comment-count');
